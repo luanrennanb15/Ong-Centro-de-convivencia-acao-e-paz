@@ -1,0 +1,130 @@
+/* =========================================================
+   CIS - Centro de Convivência Ação e Paz
+   JavaScript compartilhado (protótipo fictício)
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* ---------- 1. Menu mobile (hamburguer) ---------- */
+  const toggle = document.querySelector(".nav-toggle");
+  const links = document.querySelector(".nav-links");
+  if (toggle && links) {
+    toggle.addEventListener("click", function () {
+      links.classList.toggle("open");
+      toggle.classList.toggle("active");
+    });
+    // fecha o menu ao clicar num link
+    links.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        links.classList.remove("open");
+        toggle.classList.remove("active");
+      });
+    });
+  }
+
+  /* ---------- 2. Contadores animados (números de impacto) ---------- */
+  const counters = document.querySelectorAll("[data-count]");
+  if (counters.length) {
+    const animate = function (el) {
+      const target = parseInt(el.getAttribute("data-count"), 10);
+      const suffix = el.getAttribute("data-suffix") || "";
+      const duration = 1600;
+      const start = performance.now();
+      const step = function (now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        el.textContent = Math.floor(eased * target).toLocaleString("pt-BR") + suffix;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target.toLocaleString("pt-BR") + suffix;
+      };
+      requestAnimationFrame(step);
+    };
+    const obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(function (c) { obs.observe(c); });
+  }
+
+  /* ---------- 3. Barras de transparência ---------- */
+  const bars = document.querySelectorAll(".bar-fill");
+  if (bars.length) {
+    const barObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          el.style.width = (el.getAttribute("data-value") || "0") + "%";
+          barObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    bars.forEach(function (b) { barObs.observe(b); });
+  }
+
+  /* ---------- 4. FAQ (acordeão) ---------- */
+  document.querySelectorAll(".faq-q").forEach(function (q) {
+    q.addEventListener("click", function () {
+      const item = q.parentElement;
+      const answer = item.querySelector(".faq-a");
+      const isOpen = item.classList.contains("open");
+      // fecha todos
+      document.querySelectorAll(".faq-item.open").forEach(function (i) {
+        i.classList.remove("open");
+        i.querySelector(".faq-a").style.maxHeight = null;
+      });
+      // abre o clicado (se estava fechado)
+      if (!isOpen) {
+        item.classList.add("open");
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+    });
+  });
+
+  /* ---------- 5. Validação simples de formulários ---------- */
+  document.querySelectorAll("form[data-demo]").forEach(function (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let ok = true;
+      form.querySelectorAll("[required]").forEach(function (campo) {
+        if (!campo.value.trim()) {
+          ok = false;
+          campo.style.borderColor = "#e05a5a";
+        } else {
+          campo.style.borderColor = "";
+        }
+      });
+      const msg = form.querySelector(".form-msg");
+      if (ok) {
+        if (msg) msg.classList.add("show");
+        form.reset();
+        if (msg) setTimeout(function () { msg.classList.remove("show"); }, 6000);
+      }
+    });
+  });
+
+  /* ---------- 6. Copiar chave Pix ---------- */
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const texto = btn.getAttribute("data-copy");
+      const original = btn.textContent;
+      const done = function () {
+        btn.textContent = "Copiado! ✓";
+        setTimeout(function () { btn.textContent = original; }, 2000);
+      };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(texto).then(done).catch(done);
+      } else {
+        done();
+      }
+    });
+  });
+
+  /* ---------- 7. Ano atual no rodapé ---------- */
+  const anoEl = document.getElementById("ano");
+  if (anoEl) anoEl.textContent = new Date().getFullYear();
+
+});
