@@ -709,6 +709,66 @@ section { padding: 72px 0; }
   .carousel-btn svg { width: 16px; height: 16px; }
 }
 
+/* ---------- Animação de entrada (fade-in ao rolar) ---------- */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- Lightbox (ampliar fotos) ---------- */
+.lb-clickable { cursor: zoom-in; }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 14, 40, .93);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+.lightbox img {
+  max-width: 92vw;
+  max-height: 86vh;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+}
+.lightbox-close {
+  position: absolute;
+  top: 18px; right: 22px;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .14);
+  color: #fff; border: 0;
+  font-size: 1.7rem; line-height: 1;
+  cursor: pointer;
+  display: grid; place-items: center;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, .26); }
+.lightbox-nav {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .14);
+  color: #fff; border: 0;
+  cursor: pointer;
+  display: grid; place-items: center;
+}
+.lightbox-nav svg { width: 24px; height: 24px; }
+.lightbox-nav:hover { background: rgba(255, 255, 255, .26); }
+.lightbox-nav.prev { left: 18px; }
+.lightbox-nav.next { right: 18px; }
+@media (max-width: 640px) {
+  .lightbox-nav { width: 42px; height: 42px; }
+  .lightbox-close { top: 12px; right: 14px; }
+}
+
 /* =========================================================
    RESPONSIVO  —  celular · tablet · desktop
    ========================================================= */

@@ -156,7 +156,63 @@ document.addEventListener("DOMContentLoaded", function () {
     updateActive();
   });
 
-  /* ---------- 8. Ano atual no rodapé ---------- */
+  /* ---------- 8. Fade-in ao rolar a página ---------- */
+  (function () {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var sel = ".section-head, .card, .split > div, .quote, .stat, .cta-band, figure, .partners-strip, .friends, .carousel, .gallery, .bars, .info-list";
+    var els = Array.prototype.slice.call(document.querySelectorAll(sel));
+    if (!els.length) return;
+    els.forEach(function (el) { el.classList.add("reveal"); });
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-visible"); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { obs.observe(el); });
+  })();
+
+  /* ---------- 9. Lightbox (ampliar fotos) ---------- */
+  (function () {
+    var imgs = Array.prototype.slice.call(
+      document.querySelectorAll(".carousel-slide img, .gallery img, [data-lightbox] img")
+    );
+    if (!imgs.length) return;
+    var srcs = imgs.map(function (im) { return im.getAttribute("src"); });
+    imgs.forEach(function (im) { im.classList.add("lb-clickable"); });
+
+    var box = document.createElement("div");
+    box.className = "lightbox";
+    box.innerHTML =
+      '<button class="lightbox-close" aria-label="Fechar">&times;</button>' +
+      '<button class="lightbox-nav prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
+      '<img alt="Foto ampliada" />' +
+      '<button class="lightbox-nav next" aria-label="Próxima"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+    document.body.appendChild(box);
+    var bigImg = box.querySelector("img");
+    var current = 0;
+
+    var show = function (i) {
+      current = (i + srcs.length) % srcs.length;
+      bigImg.setAttribute("src", srcs[current]);
+    };
+    var open = function (i) { show(i); box.classList.add("open"); };
+    var close = function () { box.classList.remove("open"); };
+
+    imgs.forEach(function (im, i) { im.addEventListener("click", function () { open(i); }); });
+    box.querySelector(".lightbox-close").addEventListener("click", close);
+    box.querySelector(".lightbox-nav.prev").addEventListener("click", function (e) { e.stopPropagation(); show(current - 1); });
+    box.querySelector(".lightbox-nav.next").addEventListener("click", function (e) { e.stopPropagation(); show(current + 1); });
+    box.addEventListener("click", function (e) { if (e.target === box) close(); });
+    document.addEventListener("keydown", function (e) {
+      if (!box.classList.contains("open")) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") show(current - 1);
+      else if (e.key === "ArrowRight") show(current + 1);
+    });
+  })();
+
+  /* ---------- 10. Ano atual no rodapé ---------- */
   const anoEl = document.getElementById("ano");
   if (anoEl) anoEl.textContent = new Date().getFullYear();
 
