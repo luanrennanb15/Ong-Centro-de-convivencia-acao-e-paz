@@ -123,7 +123,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ---------- 7. Ano atual no rodapé ---------- */
+  /* ---------- 7. Carrossel de eventos (destaque central) ---------- */
+  document.querySelectorAll(".carousel").forEach(function (car) {
+    var track = car.querySelector(".carousel-track");
+    var prev = car.querySelector(".carousel-btn.prev");
+    var next = car.querySelector(".carousel-btn.next");
+    if (!track) return;
+    var slides = Array.prototype.slice.call(track.querySelectorAll(".carousel-slide"));
+    var step = function () {
+      return slides.length > 1
+        ? slides[1].getBoundingClientRect().left - slides[0].getBoundingClientRect().left
+        : track.clientWidth;
+    };
+    var updateActive = function () {
+      var center = track.getBoundingClientRect().left + track.clientWidth / 2;
+      var best = null, bestDist = Infinity;
+      slides.forEach(function (s) {
+        var r = s.getBoundingClientRect();
+        var d = Math.abs((r.left + r.width / 2) - center);
+        if (d < bestDist) { bestDist = d; best = s; }
+      });
+      slides.forEach(function (s) { s.classList.toggle("is-active", s === best); });
+    };
+    if (prev) prev.addEventListener("click", function () { track.scrollBy({ left: -step(), behavior: "smooth" }); });
+    if (next) next.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: "smooth" }); });
+    var raf;
+    track.addEventListener("scroll", function () {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(updateActive);
+    });
+    window.addEventListener("resize", updateActive);
+    updateActive();
+  });
+
+  /* ---------- 8. Ano atual no rodapé ---------- */
   const anoEl = document.getElementById("ano");
   if (anoEl) anoEl.textContent = new Date().getFullYear();
 
