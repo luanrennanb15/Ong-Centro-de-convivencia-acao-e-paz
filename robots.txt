@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://luanrennanb15.github.io/Ong-Centro-de-conviv-ncia-a-o-e-paz/sitemap.xml
+Sitemap: https://luanrennanb15.github.io/Ong-Centro-de-convivencia-acao-e-paz/sitemap.xml
