@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
   (function () {
     if (!("IntersectionObserver" in window)) return;
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var sel = ".section-head, .card, .split > div, .quote, .stat, .cta-band, figure, .partners-strip, .friends, .carousel, .gallery, .bars, .info-list";
+    var sel = ".section-head, .card, .split, .quote, .stat, .cta-band, figure, .partners-strip, .friends, .carousel, .gallery, .bars, .info-list";
     var els = Array.prototype.slice.call(document.querySelectorAll(sel));
     if (!els.length) return;
     els.forEach(function (el) { el.classList.add("reveal"); });

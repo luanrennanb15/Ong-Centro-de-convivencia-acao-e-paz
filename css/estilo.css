@@ -713,11 +713,17 @@ section { padding: 72px 0; }
 }
 
 /* ---------- Animação de entrada (fade-in ao rolar) ---------- */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease, box-shadow .3s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ---------- Efeito "vem pra frente" ao passar o mouse ---------- */
+.split .media { transition: transform .3s ease, box-shadow .3s ease; }
+.split .media:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.legado-panel:hover,
+.quote:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 
 /* ---------- Lightbox (ampliar fotos) ---------- */
 .lb-clickable { cursor: zoom-in; }
