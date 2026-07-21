@@ -824,9 +824,9 @@ section { padding: 72px 0; }
 }
 
 /* ---- MENU MOBILE (celular + tablet) ----
-   Até 1024px o menu horizontal não cabe (são vários itens), então ele
+   Até 1100px o menu horizontal não cabe (são vários itens), então ele
    vira um painel que abre pelo botão hambúrguer e ocupa a largura toda. */
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .nav-toggle { display: flex; }
   .nav-links {
     position: absolute;
