@@ -446,14 +446,14 @@ section { padding: 72px 0; }
 .info-list strong { display: block; color: var(--navy); }
 .info-list span { color: var(--muted); }
 
-.pix-box {
+.notice-box {
   background: var(--tint);
   border: 1px dashed var(--accent);
   border-radius: var(--radius);
   padding: 22px;
   margin-top: 10px;
 }
-.pix-box strong { color: var(--navy); }
+.notice-box strong { color: var(--navy); }
 .pix-key {
   font-family: "Courier New", monospace;
   background: #fff;
