@@ -109,6 +109,14 @@ python -m http.server 8000
 
 ---
 
+## 🔜 Próximos passos
+
+- **Hospedagem na Vercel com subdomínio próprio** — migrar o site para a Vercel para ter um endereço mais limpo e profissional (ex.: `cis-acao-e-paz.vercel.app`), no lugar do caminho atual do GitHub Pages.
+- Substituir os depoimentos por relatos reais de quem passou pelo CIS.
+- Publicar a descrição e responder às avaliações no perfil do Google.
+
+---
+
 ## 🖼️ Direitos de conteúdo
 
 O **código** deste repositório está sob a licença **MIT** — sinta-se livre para estudá-lo e reutilizá-lo.
