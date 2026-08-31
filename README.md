@@ -6,7 +6,7 @@
 
 **Site institucional de uma ONG que há mais de 30 anos acolhe crianças no Parque Vitória Régia, em Sorocaba/SP.**
 
-[![Ver site ao vivo](https://img.shields.io/badge/🌐_Ver_site_ao_vivo-1B2A6B?style=for-the-badge)](https://luanrennanb15.github.io/Ong-Centro-de-convivencia-acao-e-paz/)
+[![Ver site ao vivo](https://img.shields.io/badge/🌐_Ver_site_ao_vivo-1B2A6B?style=for-the-badge)](https://cis-acaoepaz-ong.vercel.app/)
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
@@ -111,7 +111,6 @@ python -m http.server 8000
 
 ## 🔜 Próximos passos
 
-- **Hospedagem na Vercel com subdomínio próprio** — migrar o site para a Vercel para ter um endereço mais limpo e profissional (ex.: `cis-acao-e-paz.vercel.app`), no lugar do caminho atual do GitHub Pages.
 - Substituir os depoimentos por relatos reais de quem passou pelo CIS.
 - Publicar a descrição e responder às avaliações no perfil do Google.
 
@@ -135,7 +134,7 @@ Toda a gratidão a quem mantém viva essa história: ao fundador **Tio Carlos** 
 
 ## 📬 Contato do CIS
 
-- 🌐 **Site:** [luanrennanb15.github.io/Ong-Centro-de-convivencia-acao-e-paz](https://luanrennanb15.github.io/Ong-Centro-de-convivencia-acao-e-paz/)
+- 🌐 **Site:** [cis-acaoepaz-ong.vercel.app](https://cis-acaoepaz-ong.vercel.app/)
 - 💬 **WhatsApp:** (15) 99753-1485
 - 📘 **Facebook:** [facebook.com/ajudeocis](https://www.facebook.com/ajudeocis/)
 - 📍 **Endereço:** R. Prof. Clodomiro Pereira, 213 — Parque Vitória Régia, Sorocaba/SP
