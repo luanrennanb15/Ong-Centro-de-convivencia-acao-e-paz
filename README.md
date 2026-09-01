@@ -11,7 +11,7 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222?style=flat&logo=github&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000?style=flat&logo=vercel&logoColor=white)
 ![Sem frameworks](https://img.shields.io/badge/Sem_frameworks-100%25_vanilla-4c8bf5?style=flat)
 
 </div>
@@ -47,7 +47,7 @@ Construído de propósito **sem frameworks e sem etapa de build** — só o esse
 - **HTML5** semântico
 - **CSS3** com variáveis, Flexbox e Grid (um único arquivo de estilo)
 - **JavaScript puro** (vanilla), sem dependências
-- **GitHub Pages** para hospedagem
+- **Vercel** para hospedagem, com deploy contínuo a cada push no GitHub
 
 ---
 
