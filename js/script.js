@@ -116,29 +116,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
       var url = "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(linhas.join("\n"));
-      window.open(url, "_blank");
+      window.open(url, "_blank", "noopener");
       var msg = form.querySelector(".form-msg");
       if (msg) { msg.classList.add("show"); setTimeout(function () { msg.classList.remove("show"); }, 6000); }
       form.reset();
     });
   });
 
-  /* ---------- 6. Copiar chave Pix ---------- */
-  document.querySelectorAll("[data-copy]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      const texto = btn.getAttribute("data-copy");
-      const original = btn.textContent;
-      const done = function () {
-        btn.textContent = "Copiado!";
-        setTimeout(function () { btn.textContent = original; }, 2000);
-      };
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(texto).then(done).catch(done);
-      } else { done(); }
-    });
-  });
-
-  /* ---------- 7. Carrossel de eventos (destaque central) ---------- */
+  /* ---------- 6. Carrossel de eventos (destaque central) ---------- */
   document.querySelectorAll(".carousel").forEach(function (car) {
     var track = car.querySelector(".carousel-track");
     var prev = car.querySelector(".carousel-btn.prev");
