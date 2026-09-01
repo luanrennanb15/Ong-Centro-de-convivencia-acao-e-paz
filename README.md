@@ -13,6 +13,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Vercel](https://img.shields.io/badge/Vercel-000?style=flat&logo=vercel&logoColor=white)
 ![Sem frameworks](https://img.shields.io/badge/Sem_frameworks-100%25_vanilla-4c8bf5?style=flat)
+![Segurança A+](https://img.shields.io/badge/securityheaders.com-A%2B-2ea44f?style=flat&logo=letsencrypt&logoColor=white)
 
 </div>
 
@@ -37,6 +38,7 @@ Este site foi feito para dar ao CIS uma presença digital à altura do trabalho 
 - **Sem dinheiro** — a entidade não recebe doações em dinheiro; o site direciona a ajuda para itens, voluntariado e parcerias.
 - **Detalhes de experiência** — animações suaves ao rolar (*fade-in*), botão "voltar ao topo", botão flutuante de WhatsApp e respeito a `prefers-reduced-motion`.
 - **SEO e compartilhamento** — `sitemap.xml`, `robots.txt`, dados estruturados **schema.org** (organização/NGO com CNPJ, endereço e contato) e *meta tags* Open Graph/Twitter para prévia bonita em redes sociais.
+- **Segurança** — cabeçalhos HTTP de proteção (Content-Security-Policy, HSTS, X-Frame-Options anti-clickjacking, entre outros) configurados via `vercel.json`, alcançando nota **A+** no [securityheaders.com](https://securityheaders.com). Inclui também uma **página 404 personalizada**.
 
 ---
 
@@ -63,6 +65,7 @@ Construído de propósito **sem frameworks e sem etapa de build** — só o esse
 ├── apoiadores.html     # Parceiros, amigos e voluntários
 ├── como-ajudar.html    # Doação de itens, voluntariado e parcerias
 ├── contato.html        # Canais de contato, formulário e mapa
+├── 404.html            # Página de erro personalizada
 ├── css/
 │   └── estilo.css      # Todo o estilo do site
 ├── js/
@@ -70,6 +73,7 @@ Construído de propósito **sem frameworks e sem etapa de build** — só o esse
 ├── imagens/            # Logo e fotos (acervo do CIS)
 ├── sitemap.xml         # Mapa do site para os buscadores
 ├── robots.txt          # Regras para os robôs de busca
+├── vercel.json         # Hospedagem + cabeçalhos de segurança
 └── LICENSE             # Licença MIT (código)
 ```
 
